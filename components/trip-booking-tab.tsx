@@ -20,7 +20,7 @@ export default function TripBookingTab() {
 
           <div>
             <h3 className="font-medium">결제 정보</h3>
-            <p className="mt-1">총 금액: ₩300,000 (3일)</p>
+            <p className="mt-1">총 금액: ₩30,000 (3일)</p>
             <p className="text-sm text-gray-500">결제일: 2025.06.01</p>
             <p className="text-sm text-gray-500">결제 방법: 신용카드 (KB국민 ****1234)</p>
           </div>
