@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowRight, Plane, MapPin, MessageSquare, GraduationCap, Users } from "lucide-react"
+import { ArrowRight, Plane, MapPin, MessageSquare, GraduationCap, Users, Bot } from "lucide-react"
 
 export default function Home() {
   return (
@@ -28,22 +28,22 @@ export default function Home() {
               <div className="flex items-start">
                 <Users className="h-5 w-5 mr-2 text-blue-500" />
                 <div>
-                  <h3 className="font-medium">가이드 정보 확인</h3>
-                  <p className="text-sm text-gray-500">현지 가이드의 프로필과 리뷰를 확인할 수 있습니다</p>
+                  <h3 className="font-medium">가이드 선택</h3>
+                  <p className="text-sm text-gray-500">현지 가이드의 프로필과 리뷰를 한눈에 확인</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 text-blue-500" />
                 <div>
                   <h3 className="font-medium">여행 일정 보기</h3>
-                  <p className="text-sm text-gray-500">맞춤형 여행 일정과 지도를 한눈에 확인</p>
+                  <p className="text-sm text-gray-500">지도와 일정을 한 화면에서 확인</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <MessageSquare className="h-5 w-5 mr-2 text-blue-500" />
                 <div>
                   <h3 className="font-medium">실시간 채팅</h3>
-                  <p className="text-sm text-gray-500">가이드와의 원활한 소통을 위한 채팅 기능</p>
+                  <p className="text-sm text-gray-500">여행 중 궁금한 점이나 필요한 요청을 가이드와 실시간으로 소통</p>
                 </div>
               </div>
             </CardContent>
@@ -71,21 +71,21 @@ export default function Home() {
                 <Users className="h-5 w-5 mr-2 text-green-500" />
                 <div>
                   <h3 className="font-medium">여행객 관리 대시보드</h3>
-                  <p className="text-sm text-gray-500">여행객 정보와 일정을 체계적으로 관리</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 text-green-500" />
-                <div>
-                  <h3 className="font-medium">실시간 위치 모니터링</h3>
-                  <p className="text-sm text-gray-500">여행객의 현재 위치를 확인하고 지원 제공</p>
+                  <p className="text-sm text-gray-500">여행객의 정보, 일정, 현재 위치, 취향을 한눈에 확인</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <MessageSquare className="h-5 w-5 mr-2 text-green-500" />
                 <div>
                   <h3 className="font-medium">통합 커뮤니케이션</h3>
-                  <p className="text-sm text-gray-500">효율적인 고객 응대를 위한 채팅 시스템</p>
+                  <p className="text-sm text-gray-500">채팅 기반의 실시간 가이드 서비스 제공</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <Bot className="h-5 w-5 mr-2 text-green-500" />
+                <div>
+                  <h3 className="font-medium">자동 완성 기능</h3>
+                  <p className="text-sm text-gray-500">효율적인 응대를 돕는 스마트 채팅 제안</p>
                 </div>
               </div>
             </CardContent>
