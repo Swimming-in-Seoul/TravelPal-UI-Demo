@@ -1,8 +1,9 @@
 "use client"
 
+import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { User, Calendar, Heart, MessageSquare, Send, Phone, CheckCircle, Play, Utensils, Landmark } from "lucide-react"
-import { chatData } from "@/lib/chat-data"
+import { chatData, aiRecommendation as defaultAiRecommendation } from "@/lib/chat-data"
 import { scheduleData, getActivityIcon, type IconType } from "@/lib/schedule-data"
 import { getTravelerData, getTravelerPreferencesSummary } from "@/lib/traveler-data"
 
@@ -45,6 +46,26 @@ const getIconComponent = (iconType: IconType, className = "h-4 w-4") => {
 }
 
 export default function DashboardTab({ traveler }: DashboardTabProps) {
+  // DashboardTab 함수 상단에 다음 상태 변수와 함수 추가 (travelerData 선언 위에 추가)
+  const [inputValue, setInputValue] = useState("")
+  const [showAIRecommendation, setShowAIRecommendation] = useState(true)
+  const [aiRecommendation, setAIRecommendation] = useState<string>(defaultAiRecommendation)
+
+  const handleAcceptRecommendation = () => {
+    setInputValue(aiRecommendation)
+    setShowAIRecommendation(false)
+  }
+
+  const handleRejectRecommendation = () => {
+    setShowAIRecommendation(false)
+  }
+
+  const handleInputChange = (value: string) => {
+    setInputValue(value)
+    // 입력값에 상관없이 제안 생성
+    setAIRecommendation(defaultAiRecommendation)
+  }
+
   // lib에서 여행객 데이터 가져오기
   const travelerData = getTravelerData(traveler.id)
   const preferencesSummary = getTravelerPreferencesSummary(traveler.id)
@@ -200,22 +221,115 @@ export default function DashboardTab({ traveler }: DashboardTabProps) {
                 key={message.id}
                 className={`flex ${message.sender === "traveler" ? "justify-start" : "justify-end"}`}
               >
-                <div
-                  className={`max-w-[80%] rounded-lg p-2 text-sm ${
-                    message.sender === "traveler" ? "bg-gray-100 text-gray-800" : "bg-green-100 text-green-800"
-                  }`}
-                >
-                  <p>{message.text}</p>
-                  <p className="text-xs text-gray-500 mt-1 text-right">{message.time}</p>
+                {message.sender === "traveler" && (
+                  <div className="flex flex-col items-center mr-2">
+                    <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mb-1 overflow-hidden border border-gray-300">
+                      <img
+                        src="/placeholder.svg?height=32&width=32"
+                        alt="여행객"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+                <div className="max-w-[70%]">
+                  <div
+                    className={`relative px-3 py-1.5 ${
+                      message.sender === "traveler"
+                        ? "bg-white text-gray-800 rounded-tl-sm rounded-tr-2xl rounded-br-2xl rounded-bl-2xl shadow-sm border border-gray-100"
+                        : "bg-green-500 text-white rounded-tl-2xl rounded-tr-sm rounded-br-2xl rounded-bl-2xl shadow-sm"
+                    }`}
+                  >
+                    <p className="text-xs">{message.text}</p>
+                  </div>
+                  <p
+                    className={`text-[10px] text-gray-500 mt-0.5 ${message.sender === "traveler" ? "text-left" : "text-right"}`}
+                  >
+                    {message.time}
+                  </p>
                 </div>
+                {message.sender === "guide" && (
+                  <div className="flex flex-col items-center ml-2">
+                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mb-1 overflow-hidden border border-green-200">
+                      <img
+                        src="/placeholder.svg?height=32&width=32"
+                        alt="가이드"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
+            {/* AI 추천 메시지 */}
+            {showAIRecommendation && (
+              <div className="flex justify-end mb-2">
+                <div className="max-w-[70%]">
+                  <div className="px-3 py-1.5 bg-green-500 bg-opacity-50 text-white rounded-tl-2xl rounded-tr-sm rounded-br-2xl rounded-bl-2xl shadow-sm">
+                    <p className="text-xs">
+                      {aiRecommendation}{" "}
+                      <span className="inline-flex items-center ml-1">
+                        <button
+                          onClick={handleAcceptRecommendation}
+                          className="text-white hover:text-green-200 transition-colors mr-1"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        </button>
+                        <span className="text-white/30 mx-1">|</span>
+                        <button
+                          onClick={handleRejectRecommendation}
+                          className="text-white hover:text-red-200 transition-colors ml-1"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                          </svg>
+                        </button>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center ml-2">
+                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mb-1 overflow-hidden border border-green-200">
+                    <img
+                      src="/placeholder.svg?height=32&width=32"
+                      alt="가이드"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="mt-3 flex">
             <input
               type="text"
               placeholder="메시지 입력..."
-              className="flex-1 text-sm rounded-l-md border border-gray-300 p-2"
+              value={inputValue}
+              onChange={(e) => handleInputChange(e.target.value)}
+              className="flex-1 text-xs rounded-l-md border border-gray-300 p-2"
             />
             <button className="bg-green-500 text-white px-3 flex items-center justify-center">
               <Send className="h-4 w-4" />
