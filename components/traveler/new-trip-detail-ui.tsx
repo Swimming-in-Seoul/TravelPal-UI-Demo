@@ -5,9 +5,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowLeft } from "lucide-react"
-import TripPlanTab from "./trip-plan-tab"
-import TripGuideTab from "./trip-guide-tab"
-import TripBookingTab from "./trip-booking-tab"
+import TripPlanTab from "./new-trip-plan-tab"
+import TripGuideTab from "./new-trip-guide-tab"
+import TripBookingTab from "./new-trip-booking-tab"
 
 const trips = [
   {

@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import CurrentTripContainer from "@/components/current-trip-container"
-import NewTripContainer from "@/components/new-trip-container"
-import PreviousTripsUI from "@/components/previous-trips-ui"
-import TravelerSettingsUI from "@/components/traveler-settings-ui"
+import CurrentTripContainer from "@/components/traveler/current-trip-tab"
+import NewTripContainer from "@/components/traveler/new-trip-tab"
+import PreviousTripsUI from "@/components/traveler/previous-trips-tab"
+import TravelerSettingsUI from "@/components/traveler/settings-tab"
 import Link from "next/link"
 import { ArrowLeft, Map, Plus, History, Settings } from "lucide-react"
 

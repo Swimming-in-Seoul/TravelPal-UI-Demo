@@ -1,7 +1,10 @@
 "use client"
+import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { MapPin, Calendar, DollarSign, Plus } from "lucide-react"
+import TripDetailUI from "./new-trip-detail-ui"
+import CreateTripForm from "./new-trip-create-trip-form"
 
 const trips = [
   {
@@ -26,11 +29,25 @@ const trips = [
   },
 ]
 
-interface NewTripUIProps {
-  onTripSelect: (tripId: number) => void
-}
+export default function NewTripContainer() {
+  const [selectedTrip, setSelectedTrip] = useState<number | null>(null)
 
-export default function NewTripUI({ onTripSelect }: NewTripUIProps) {
+  const handleTripSelect = (tripId: number) => {
+    setSelectedTrip(tripId)
+  }
+
+  const handleBack = () => {
+    setSelectedTrip(null)
+  }
+
+  if (selectedTrip === 0) {
+    return <CreateTripForm onBack={handleBack} />
+  }
+
+  if (selectedTrip !== null) {
+    return <TripDetailUI tripId={selectedTrip} onBack={handleBack} />
+  }
+
   return (
     <div className="flex flex-col h-full">
       {/* 헤더 */}
@@ -46,7 +63,7 @@ export default function NewTripUI({ onTripSelect }: NewTripUIProps) {
             <Card
               key={trip.id}
               className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-              onClick={() => onTripSelect(trip.id)}
+              onClick={() => handleTripSelect(trip.id)}
             >
               <div className="relative">
                 <img src={trip.image || "/placeholder.svg"} alt={trip.title} className="w-full h-40 object-cover" />
@@ -83,7 +100,7 @@ export default function NewTripUI({ onTripSelect }: NewTripUIProps) {
           {/* 새로운 여행 추가 카드 */}
           <Card
             className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow border border-gray-200 bg-transparent"
-            onClick={() => onTripSelect(0)}
+            onClick={() => handleTripSelect(0)}
           >
             <div className="relative">
               <div className="w-full h-40 flex items-center justify-center">

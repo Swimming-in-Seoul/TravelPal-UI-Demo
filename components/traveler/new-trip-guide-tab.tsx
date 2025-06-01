@@ -21,7 +21,7 @@ type Guide = {
   verified: boolean
 }
 
-interface GuideSelectionUIProps {
+interface TripGuideTabProps {
   trip?: {
     id: number
     title: string
@@ -33,7 +33,7 @@ interface GuideSelectionUIProps {
   }
 }
 
-export default function GuideSelectionUI({ trip }: GuideSelectionUIProps) {
+export default function TripGuideTab({ trip }: TripGuideTabProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedFilter, setSelectedFilter] = useState("추천순")
 

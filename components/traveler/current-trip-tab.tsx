@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Map, MessageSquare, User } from "lucide-react"
-import TripMapScheduleTab from "./trip-map-schedule-tab"
-import TripChatTab from "./trip-chat-tab"
-import TripGuideInfoTab from "./trip-guide-info-tab"
+import TripMapScheduleTab from "./current-trip-map-schedule-tab"
+import TripChatTab from "./current-trip-chat-tab"
+import TripGuideInfoTab from "./current-trip-guide-info-tab"
 
 export default function CurrentTripContainer() {
   const [activeTab, setActiveTab] = useState("map")

@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import CurrentTravelersUI from "@/components/guide/current-travelers-ui"
-import PreviousTravelersUI from "@/components/guide/previous-travelers-ui"
-import GuideSettingsUI from "@/components/guide/guide-settings-ui"
+import CurrentTravelersUI from "@/components/guide/current-travelers-tab"
+import PreviousTravelersUI from "@/components/guide/previous-travelers-tab"
+import GuideSettingsUI from "@/components/guide/settings-tab"
 import Link from "next/link"
 import { ArrowLeft, Users, History, Settings } from "lucide-react"
 

@@ -4,10 +4,10 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TravelerSidebar from "./traveler-sidebar"
 import TravelerHeader from "./traveler-header"
-import DashboardTab from "./dashboard-tab"
-import ScheduleTab from "./schedule-tab"
-import PreferencesTab from "./preferences-tab"
-import ChatTab from "./chat-tab"
+import DashboardTab from "./current-travlers-dashboard-tab"
+import ScheduleTab from "./current-travlers-schedule-tab"
+import PreferencesTab from "./current-travlers-preferences-tab"
+import ChatTab from "./current-travlers-chat-tab"
 
 type Traveler = {
   id: number
