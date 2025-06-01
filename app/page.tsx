@@ -51,6 +51,7 @@ export default function Home() {
               <Link href="/traveler" className="w-full">
                 <Button className="w-full bg-blue-600 hover:bg-blue-700">
                   여행객 인터페이스 보기
+                  <span className="text-xs ml-1 opacity-75">(모바일 화면에 최적화)</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -92,6 +93,7 @@ export default function Home() {
               <Link href="/guide" className="w-full">
                 <Button className="w-full bg-green-600 hover:bg-green-700">
                   가이드 인터페이스 보기
+                  <span className="text-xs ml-1 opacity-75">(데스크톱 화면에 최적화)</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
