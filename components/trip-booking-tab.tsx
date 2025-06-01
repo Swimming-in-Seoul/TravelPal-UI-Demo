@@ -10,17 +10,17 @@ export default function TripBookingTab() {
             <h3 className="font-medium">가이드 정보</h3>
             <div className="flex items-center mt-2">
               <User className="h-5 w-5 text-gray-500 mr-2" />
-              <p>마르코 가이드 (현지 전문 가이드)</p>
+              <p>김민수 가이드 (현지 전문 가이드)</p>
             </div>
             <div className="flex items-center mt-1">
               <MessageSquare className="h-5 w-5 text-gray-500 mr-2" />
-              <p>연락처: +33 987 654 321</p>
+              <p>연락처: +39 123 456 789</p>
             </div>
           </div>
 
           <div>
             <h3 className="font-medium">결제 정보</h3>
-            <p className="mt-1">총 금액: ₩350,000</p>
+            <p className="mt-1">총 금액: ₩30,000 (3일)</p>
             <p className="text-sm text-gray-500">결제일: 2025.06.01</p>
             <p className="text-sm text-gray-500">결제 방법: 신용카드 (KB국민 ****1234)</p>
           </div>
