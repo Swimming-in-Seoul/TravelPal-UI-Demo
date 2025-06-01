@@ -85,7 +85,7 @@ export default function Home() {
                 <Bot className="h-5 w-5 mr-2 text-green-500" />
                 <div>
                   <h3 className="font-medium">자동 완성 기능</h3>
-                  <p className="text-sm text-gray-500">효율적인 응대를 돕는 스마트 채팅 제안</p>
+                  <p className="text-sm text-gray-500">효율적인 응대를 돕는 LLM 기반 자동 응답</p>
                 </div>
               </div>
             </CardContent>
